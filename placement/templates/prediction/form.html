@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Placement Prediction</title>
+    <style>
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            text-align: center;
+        }
+
+        /* Main Container */
+        .container {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px; /* Reduced padding */
+            border-radius: 10px;
+            width: 280px; /* Reduced width */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-right: 200px; /* Adjusted margin */
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 3px;
+            text-align: left;
+        }
+
+        /* Input Fields */
+        input {
+            width: 100%;
+            padding: 6px; /* Reduced padding */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px; /* Smaller text */
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Submit Button */
+        .btn {
+            display: block;
+            background: #0072ff;
+            color: white;
+            text-decoration: none;
+            padding: 8px; /* Reduced padding */
+            font-size: 14px;
+            border-radius: 5px;
+            width: 100%;
+            text-align: center;
+            margin-top: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Image Styling */
+        img {
+            max-width: 600px; /* Slightly smaller */
+            display: block;
+            margin: 0 auto 10px;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+    <img src="{% static 'images/job.png' %}" alt="Job Prediction">
+    <div class="container">
+        <h2>Enter Features for Job Prediction</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {% for feature in features %}
+                <label>{{ feature }}:</label>
+                <input type="text" name="{{ feature }}" required><br>
+            {% endfor %}
+            <button type="submit" class="btn">Predict</button>
+        </form>
+    </div>
+</body>
+</html>

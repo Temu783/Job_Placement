@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        /* Main Container */
+        .container {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #6cb2eb;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        li {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px;
+            margin: 3px 0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Button Styling */
+        .btn {
+            display: block;
+            background: #0072ff;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Image Styling */
+        img {
+            max-width: 120px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+    <div class="container">
+        <img src="{% static 'images/job.png' %}" alt="Job Prediction">
+        <h2>Prediction Result: {{ result }}</h2>
+
+        <h3>Entered Features:</h3>
+        <ul>
+            {% for feature, value in features %}
+                <li>{{ feature }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Try Again Button -->
+        <a href="{% url 'form' %}" class="btn">Try Again</a>
+    </div>
+</body>
+</html>
